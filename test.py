@@ -16,7 +16,7 @@ def test(gpu_id, model_path, datapath, save_root_path, group_size, img_size, img
                     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
     img_transform_gray = transforms.Compose([transforms.Resize((img_size, img_size)), transforms.ToTensor(),
                                              transforms.Normalize(mean=[0.449], std=[0.226])])
-	print(datapath)
+    print(datapath)
     with torch.no_grad():
 		for p in range(len(datapath)):
             all_class = os.listdir(os.path.join(datapath[p], img_dir_name))
@@ -39,7 +39,7 @@ def test(gpu_id, model_path, datapath, save_root_path, group_size, img_size, img
                 #print(len(image_path))
                 image_list.append(list(map(lambda x: os.path.join(datapath[p], img_dir_name, all_class[s], x), image_path)))
                 save_list.append(list(map(lambda x: os.path.join(save_root_path[p], all_class[s], x[:-4]+'.png'), image_path)))
-			print(image_list)
+            print(image_list)
             for i in range(len(image_list)):
                 cur_class_all_image = image_list[i]
                 cur_class_rgb = torch.zeros(len(cur_class_all_image), 3, img_size, img_size)
@@ -70,10 +70,10 @@ def test(gpu_id, model_path, datapath, save_root_path, group_size, img_size, img
 
 
                 class_save_path = os.path.join(save_root_path[p], all_class[i])
-				print(class_save_path)
+                print(class_save_path)
                 if not os.path.exists(class_save_path):
                     os.makedirs(class_save_path)
-				print(cur_class_all_image)
+                print(cur_class_all_image)
                 for j in range(len(cur_class_all_image)):
                     exact_save_path = save_list[i][j]
                     result = cur_class_mask[j, :, :].numpy()
