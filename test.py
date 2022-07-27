@@ -226,7 +226,7 @@ if __name__ == '__main__':
     '''
 
     save_root_path = [args.output_dir]
-    if args.task != 'CoS_CoSD':
+    if args.task == 'CoS_CoSD':
         if args.use_flow:
             from model_video_flow import build_model
             test_with_flow(gpu_id, model_path, val_datapath, save_root_path, 5, 224, 'image')
