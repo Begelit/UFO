@@ -18,7 +18,7 @@ def test(gpu_id, model_path, datapath, save_root_path, group_size, img_size, img
                                              transforms.Normalize(mean=[0.449], std=[0.226])])
     print(datapath)
     with torch.no_grad():
-		for p in range(len(datapath)):
+    	for p in range(len(datapath)):
             all_class = os.listdir(os.path.join(datapath[p], img_dir_name))
             
             image_list, save_list = list(), list()
