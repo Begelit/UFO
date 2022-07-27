@@ -16,8 +16,8 @@ def test(gpu_id, model_path, datapath, save_root_path, group_size, img_size, img
                     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
     img_transform_gray = transforms.Compose([transforms.Resize((img_size, img_size)), transforms.ToTensor(),
                                              transforms.Normalize(mean=[0.449], std=[0.226])])
+	print(datapath)
     with torch.no_grad():
-		print(datapath)
 		for p in range(len(datapath)):
             all_class = os.listdir(os.path.join(datapath[p], img_dir_name))
             
